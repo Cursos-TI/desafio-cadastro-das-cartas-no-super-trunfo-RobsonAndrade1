@@ -8,7 +8,41 @@
 
 int main() {
 
-    printf("*** Desafio Cadastro Das Cartas ***\n");
+    char Pais [50];
+    char Estado [50];
+    char Codigo [50];
+    int Populacao;
+    float Area;
+    float Pib;
+    int Pontos[20];
+
+    printf("*** Países ***\n");
+
+    printf("Digite o País \n");
+    scanf("%s", &Pais);
+
+    printf("Digite o Estado \n");
+    scanf("%s", &Estado);
+
+    printf("Digite o Códio da Carta \n");
+    scanf("%s", &Codigo);
+
+    printf("Digite o Numero De Habitantes \n");
+    scanf("%s", &Populacao);
+
+    printf("Digite a Àrea \n");
+    scanf("%f", &Area);
+
+    printf("Digite o PIB \n");
+    scanf("%f", &Pib);
+
+    printf("Digite Os Pontos Turisticos \n");
+    scanf("%d", &Pontos);
+
+    printf("País: %s \n" , Pais);
+    printf("Estado: %s \n", Estado);
+    printf("Código: %s \n", Codigo);
+    printf("População: %d \n", Populacao);
 
     // Sugestão: Defina variáveis separadas para cada atributo da cidade.
     // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
