@@ -126,7 +126,7 @@ int main() {
 
 // Comparação dos atributos
 
-    printf("***Comparação de Cartas***:\n");
+    printf("***Comparação de Cartas***\n");
     printf("População: Carta %d venceu (%d)\n", Populacao > Populacao2 ? 1 : 2, Populacao > Populacao2);
     printf("Área: Carta %d venceu (%d)\n", Area > Area2 ? 1 : 2, Area > Area2);
     printf("PIB: Carta %d venceu (%d)\n", Pib > Pib2 ? 1 : 2, Pib > Pib2);
@@ -137,5 +137,23 @@ int main() {
  
     printf("\n"); // Pula Uma Linha
 
+// Comparação dos pontos turísticos
+
+    printf("***Comparação de Cartas (Atributo: Pontos Turísticos)***\n");
+    printf("Carta 1 - %s (%s): %d pontos\n", Cidade, Estado, Pontos);
+    printf("Carta 2 - %s (%s): %d pontos\n", Cidade2, Estado2, Pontos2);
+  
+// Determinar a carta vencedora
+
+    if (Pontos > Pontos2) {
+        printf("\nResultado: Carta 1 (%s) venceu!\n", Cidade);
+    } else if (Pontos < Pontos2) {
+        printf("\nResultado: Carta 2 (%s) venceu!\n", Cidade2);
+    } else {
+        printf("\nResultado: Empate! Ambas têm %d pontos turísticos.\n", Pontos);
+    }
+
+    printf("\n"); // Pula Uma Linha
+    
     return 0;
 }
