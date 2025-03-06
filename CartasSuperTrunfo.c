@@ -15,7 +15,7 @@ int main() {
 
      char Pais2[20], Estado2[10], Codigo2[10], Cidade2[50];
      float Area2, Pib2, DensidadePopulacional2, PibPerCapita2, SuperPoder2;
-     int  Populacao2, Pontos2;
+     int  Populacao2, Pontos2, escolha2;
 
 // Cadastro da Carta 1
 
@@ -165,78 +165,64 @@ int main() {
     printf("5 - Densidade Populacional\n");
     printf("Escolha: ");
     scanf("%d", &escolha);
+    printf("Escolha o segundo atributo para comparar (diferente do primeiro):\n");
+    scanf("%d", &escolha2);
+    
+    while (escolha == escolha2) {
 
-// Lógica de Comparação com base no atributo selecionado
-
-    switch (escolha) {
-        case 1: // Comparação de População
-            printf("\nComparando População:\n");
-            printf("%s: %d habitantes\n", Pais, Populacao);
-            printf("%s: %d habitantes\n", Pais2, Populacao2);
-            if (Populacao > Populacao2) {
-                printf("Carta 1 (%s) venceu!\n", Pais);
-            } else if (Populacao < Populacao2) {
-                printf("Carta 2 (%s) venceu!\n", Pais2);
-            } else {
-                printf("Empate! Ambas têm %d habitantes.\n", Populacao);
-            }
-            break;
-
-        case 2: // Comparação de Área
-            printf("\nComparando Área:\n");
-            printf("%s: %.2f km²\n", Pais, Area);
-            printf("%s: %.2f km²\n", Pais2, Area2);
-            if (Area > Area2) {
-                printf("Carta 1 (%s) venceu!\n", Pais);
-            } else if (Area < Area2) {
-                printf("Carta 2 (%s) venceu!\n", Pais2);
-            } else {
-                printf("Empate! Ambas têm %.2f km².\n", Area);
-            }
-            break;
-
-        case 3: // Comparação de PIB
-            printf("\nComparando PIB:\n");
-            printf("%s: %.2f bilhões de reais\n", Pais, Pib);
-            printf("%s: %.2f bilhões de reais\n", Pais2, Pib2);
-            if (Pib > Pib2) {
-                printf("Carta 1 (%s) venceu!\n", Pais);
-            } else if (Pib < Pib2) {
-                printf("Carta 2 (%s) venceu!\n", Pais2);
-            } else {
-                printf("Empate! Ambos têm %.2f bilhões de reais.\n", Pib);
-            }
-            break;
-
-        case 4: // Comparação de Pontos Turísticos
-            printf("\nComparando Pontos Turísticos:\n");
-            printf("%s: %d pontos\n", Pais, Pontos);
-            printf("%s: %d pontos\n", Pais2, Pontos2);
-            if (Pontos > Pontos2) {
-                printf("Carta 1 (%s) venceu!\n", Pais);
-            } else if (Pontos < Pontos2) {
-                printf("Carta 2 (%s) venceu!\n", Pais2);
-            } else {
-                printf("Empate! Ambas têm %d pontos turísticos.\n", Pontos);
-            }
-            break;
-
-        case 5: // Comparação de Densidade Populacional
-            printf("\nComparando Densidade Populacional:\n");
-            printf("%s: %.2f hab/km²\n", Pais, DensidadePopulacional);
-            printf("%s: %.2f hab/km²\n", Pais2, DensidadePopulacional2);
-            if (DensidadePopulacional < DensidadePopulacional2) {
-                printf("Carta 1 (%s) venceu!\n", Pais);
-            } else if (DensidadePopulacional > DensidadePopulacional2) {
-                printf("Carta 2 (%s) venceu!\n", Pais2);
-            } else {
-                printf("Empate! Ambas têm %.2f hab/km².\n", DensidadePopulacional);
-            }
-            break;
-
-        default:
-            printf("Opção inválida!\n");
+        printf("Atributo já escolhido! Escolha outro:\n");
+        scanf("%d", &escolha2);
     }
+
+// Cálculo da soma dos atributos
+
+    float valor1 = (escolha == 5 ? 1 / DensidadePopulacional : escolha == 1 ? Populacao : escolha == 2 ? Area : escolha == 3 ? Pib : Pontos);
+    float valor2 = (escolha2 == 5 ? 1 / DensidadePopulacional : escolha2 == 1 ? Populacao : escolha2 == 2 ? Area : escolha2 == 3 ? Pib : Pontos);
+    
+    float valor1_2 = (escolha == 5 ? 1 / DensidadePopulacional2 : escolha == 1 ? Populacao2 : escolha == 2 ? Area2 : escolha == 3 ? Pib2 : Pontos2);
+    float valor2_2 = (escolha2 == 5 ? 1 / DensidadePopulacional2 : escolha2 == 1 ? Populacao2 : escolha2 == 2 ? Area2 : escolha2 == 3 ? Pib2 : Pontos2);
+    
+    float soma1 = valor1 + valor2;
+    float soma2 = valor1_2 + valor2_2;
+    
+
+// Exibição do resultado da comparação de atributos
+
+    printf("\n*** Resultado da Comparação de Atributos ***\n");
+    printf("Carta 1 - País: %s\n", Pais);
+    printf("Carta 2 - País: %s\n", Pais2);
+
+    printf("\nAtributos comparados:\n");
+
+    printf("1º Atributo: %s\n", escolha == 1 ? "População" : escolha == 2 ? "Área" : escolha == 3 ? "PIB" : escolha == 4 ? "Pontos Turísticos" : "Densidade Populacional");
+    printf("2º Atributo: %s\n", escolha2 == 1 ? "População" : escolha2 == 2 ? "Área" : escolha2 == 3 ? "PIB" : escolha2 == 4 ? "Pontos Turísticos" : "Densidade Populacional");
+
+    printf("\nValores individuais:\n");
+
+    printf("Carta 1 - %s: %.2f | %s: %.2f\n", 
+    escolha == 1 ? "População" : escolha == 2 ? "Área" : escolha == 3 ? "PIB" : escolha == 4 ? "Pontos Turísticos" : "Densidade Populacional", valor1,
+    escolha2 == 1 ? "População" : escolha2 == 2 ? "Área" : escolha2 == 3 ? "PIB" : escolha2 == 4 ? "Pontos Turísticos" : "Densidade Populacional", valor2);
+
+    printf("Carta 2 - %s: %.2f | %s: %.2f\n", 
+    escolha == 1 ? "População" : escolha == 2 ? "Área" : escolha == 3 ? "PIB" : escolha == 4 ? "Pontos Turísticos" : "Densidade Populacional", valor1_2,
+    escolha2 == 1 ? "População" : escolha2 == 2 ? "Área" : escolha2 == 3 ? "PIB" : escolha2 == 4 ? "Pontos Turísticos" : "Densidade Populacional", valor2_2);
+
+    printf("\nSoma dos Atributos:\n");
+
+    printf("Carta 1 - %s: %.2f\n", Pais, soma1);
+    printf("Carta 2 - %s: %.2f\n", Pais2, soma2);
+
+// Determina a carta vencedora
+
+    if (soma1 > soma2) {
+        printf("\nVencedor: Carta 1 (%s)\n", Pais);
+    } else if (soma2 > soma1) {
+        printf("\nVencedor: Carta 2 (%s)\n", Pais2);
+    } else {
+        printf("\nResultado: Empate!\n");
+    }
+
+    printf("\n"); // Pula Uma Linha
 
     return 0;
 }
